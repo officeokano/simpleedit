@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="content-language" content="ja">
+    <link rel="stylesheet" href="edit.css">
+    <link rel="stylesheet" href="hover.css">
+    <script type="text/javascript" src="edit.js"></script>
+    <title>SimpleEdit(css)</title>
+</head>
+
+<body onload="document.getElementById('textarea').focus();">
+    <div id="pullnav">
+        <a id="clear" onclick="cleartextarea()">Clear</a>
+        <a id="save" onclick="saveContent()">Save</a>
+        <a id="load" onclick="loadContent()">Load</a>
+    </div>
+
+    <div id="textarea" contenteditable="true"></div>
+</body>
+</html>
