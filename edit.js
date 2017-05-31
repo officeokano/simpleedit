@@ -9,23 +9,23 @@ var storage = localStorage;
 document.title = "SimpleEdit(js)";
 
 // save text to local storage
-function saveContent(){
+window.onbeforeunload = function saveContent(){
     var textContent = document.getElementById("textarea");
     var key = "saveeditor";
     var value = textContent.innerText;
     storage.setItem(key, value);
     document.getElementById('textarea').focus();
-}
+};
 
 // load text from local storage
-function loadContent(){
+window.onload = function loadContent(){
     var loaded = storage.getItem("saveeditor");
     document.getElementById("textarea").innerText = loaded;
     document.getElementById('textarea').focus();
-}
+};
 
 // clear textarea
 function cleartextarea(){
     document.getElementById("textarea").innerText = "";
     document.getElementById('textarea').focus();
-}
+};
