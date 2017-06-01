@@ -39,9 +39,7 @@ window.onbeforeunload = function() {
 
 var onDropFile = function(e) {
     e.preventDefault();
-    // File オブジェクトを取得
     var file = e.dataTransfer.files[0];
-    // ファイル読み込み
     readFile(file);
 };
 
