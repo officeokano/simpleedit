@@ -5,7 +5,6 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 };
 
 var storage = localStorage;
-document.title = "SimpleEdit(js)";
 
 function saveContent() {
     var textContent = document.getElementById("textarea");
@@ -19,6 +18,7 @@ function loadContent() {
     var loaded = storage.getItem("saveeditor");
     document.getElementById("textarea").innerText = loaded;
     document.getElementById('textarea').focus();
+    document.title = "LocalStorage";
 };
 
 function cleartextarea() {
@@ -28,6 +28,7 @@ function cleartextarea() {
 
 window.onload = function() {
     loadContent();
+    document.getElementById("open").addEventListener("change", onChangeFile, false);
     document.getElementById("textarea").addEventListener("dragover", onCancel, false);
     document.getElementById("textarea").addEventListener("dragenter", onCancel, false);
     document.getElementById("textarea").addEventListener("drop", onDropFile, false);
@@ -35,6 +36,11 @@ window.onload = function() {
 
 window.onbeforeunload = function() {
     saveContent();
+};
+
+var onChangeFile = function(e) {
+    var file = e.target.files[0];
+    readFile(file);
 };
 
 var onDropFile = function(e) {
@@ -49,6 +55,7 @@ var onCancel = function(e) {
 };
 
 var readFile = function(file) {
+    document.title = file.name;
     var reader = new FileReader();
     reader.onload = function(e) {
         document.getElementById("textarea").innerText = e.target.result;

@@ -12,6 +12,14 @@ html,body{
   height:100%;
 }
 
+div#menu{
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  top: -40px;
+  right: 20px;
+}
+
 div#textarea{
   display:block;
   padding:0.5em;
