@@ -63,3 +63,14 @@ var readFile = function(file) {
     };
     reader.readAsText(file);
 };
+
+function handleDownload() {
+    var filename = document.title;
+    var text = document.getElementById("textarea").innerText;
+    var blob = new Blob([text], {type: "text/plain"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.target = '_blank';
+    a.download = filename;
+    a.click();
+};

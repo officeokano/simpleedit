@@ -25,11 +25,15 @@ div#menu{
     color: #020;
 }
 
+label{
+    font-size: 12px;
+}
+
 input#open{
     display: none;
 }
 
-label{
+a#save{
     font-size: 12px;
 }
 
