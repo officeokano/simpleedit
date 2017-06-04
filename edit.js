@@ -70,6 +70,7 @@ var downloadContent = function() {
     var blob = new Blob([text], {type: "text/plain"});
     var a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
+    document.body.appendChild(a); // support firefox
     a.target = '_blank';
     a.download = filename;
     a.click();
