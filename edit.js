@@ -29,6 +29,7 @@ function cleartextarea() {
 window.onload = function() {
     loadContent();
     document.getElementById("open").addEventListener("change", onChangeFile, false);
+    document.getElementById("save").addEventListener("click", downloadContent, false);
     document.getElementById("textarea").addEventListener("dragover", onCancel, false);
     document.getElementById("textarea").addEventListener("dragenter", onCancel, false);
     document.getElementById("textarea").addEventListener("drop", onDropFile, false);
@@ -64,7 +65,7 @@ var readFile = function(file) {
     reader.readAsText(file);
 };
 
-function handleDownload() {
+var downloadContent = function() {
     var filename = document.title;
     var text = document.getElementById("textarea").innerText;
     var blob = new Blob([text], {type: "text/plain"});

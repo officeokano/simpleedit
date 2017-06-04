@@ -20,13 +20,13 @@ div#menu{
     left: 10px;
     height:20px;
     padding:0px 10px 0px 10px;
-    margin:0px 10px 0px 10px;
-    background-color: #eee;
-    color: #020;
+/*    background-color: #eee;
+    color: #020; */
 }
 
 label{
     font-size: 12px;
+    cursor: pointer;
 }
 
 input#open{
@@ -35,6 +35,7 @@ input#open{
 
 a#save{
     font-size: 12px;
+    cursor: pointer;
 }
 
 div#textarea{
