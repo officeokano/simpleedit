@@ -7,9 +7,8 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 var storage = localStorage;
 
 function saveContent() {
-    var textContent = document.getElementById("textarea");
     var key = "saveeditor";
-    var value = textContent.innerText;
+    var value = document.getElementById("textarea").innerText;
     storage.setItem(key, value);
     document.getElementById('textarea').focus();
 };
