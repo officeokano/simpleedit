@@ -69,6 +69,9 @@ var downloadContent = function() {
     var text = document.getElementById("textarea").innerText;
     var blob = new Blob([text], {type: "text/plain"});
     var a = document.createElement("a");
+    if (filename = "LocalStorage") {
+        filename = "simpleedit.txt";
+    };
     a.href = URL.createObjectURL(blob);
     document.body.appendChild(a); // support firefox
     a.target = '_blank';
