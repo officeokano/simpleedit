@@ -33,7 +33,11 @@ input#open{
     display: none;
 }
 
-a#save{
+#save{
+    font-size: 12px;
+    cursor: pointer;
+}
+#clear{
     font-size: 12px;
     cursor: pointer;
 }

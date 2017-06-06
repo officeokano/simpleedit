@@ -10,28 +10,41 @@ function saveContent() {
     var key = "saveeditor";
     var value = document.getElementById("textarea").innerText;
     storage.setItem(key, value);
+    key = "savetitle";
+    value = document.title;
+    storage.setItem(key, value);
     document.getElementById('textarea').focus();
 };
 
 function loadContent() {
     var loaded = storage.getItem("saveeditor");
+    var loadtitle = storage.getItem("savetitle");
     document.getElementById("textarea").innerText = loaded;
     document.getElementById('textarea').focus();
-    document.title = "LocalStorage";
-};
-
-function cleartextarea() {
-    document.getElementById("textarea").innerText = "";
-    document.getElementById('textarea').focus();
+    if (loadtitle == null) {
+        document.title = "untilted";
+        } else {
+    document.title = loadtitle;
+    }
 };
 
 window.onload = function() {
     loadContent();
     document.getElementById("open").addEventListener("change", onChangeFile, false);
     document.getElementById("save").addEventListener("click", downloadContent, false);
+    document.getElementById("clear").addEventListener("click", cleartextarea, false);
     document.getElementById("textarea").addEventListener("dragover", onCancel, false);
     document.getElementById("textarea").addEventListener("dragenter", onCancel, false);
     document.getElementById("textarea").addEventListener("drop", onDropFile, false);
+};
+
+var cleartextarea = function() {
+    var conf = window.confirm('clear text?');
+    if (conf == true) {
+        document.getElementById("textarea").innerText = null;
+        document.getElementById('textarea').focus();
+        document.title = "untitled";
+    }
 };
 
 window.onbeforeunload = function() {
@@ -69,9 +82,6 @@ var downloadContent = function() {
     var text = document.getElementById("textarea").innerText;
     var blob = new Blob([text], {type: "text/plain"});
     var a = document.createElement("a");
-    if (filename = "LocalStorage") {
-        filename = "simpleedit.txt";
-    };
     a.href = URL.createObjectURL(blob);
     document.body.appendChild(a); // support firefox
     a.target = '_blank';
