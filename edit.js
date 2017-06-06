@@ -38,6 +38,10 @@ window.onload = function() {
     document.getElementById("textarea").addEventListener("drop", onDropFile, false);
 };
 
+window.onbeforeunload = function() {
+    saveContent();
+};
+
 var cleartextarea = function() {
     var conf = window.confirm('clear text?');
     if (conf == true) {
@@ -45,10 +49,6 @@ var cleartextarea = function() {
         document.getElementById('textarea').focus();
         document.title = "untitled";
     }
-};
-
-window.onbeforeunload = function() {
-    saveContent();
 };
 
 var onChangeFile = function(e) {
