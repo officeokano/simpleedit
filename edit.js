@@ -42,7 +42,7 @@ window.onbeforeunload = function() {
     saveContent();
 };
 
-var cleartextarea = function() {
+function cleartextarea () {
     var conf = window.confirm('clear text?');
     if (conf == true) {
         document.getElementById("textarea").innerText = null;
@@ -51,23 +51,23 @@ var cleartextarea = function() {
     }
 };
 
-var onChangeFile = function(e) {
+function onChangeFile (e) {
     var file = e.target.files[0];
     readFile(file);
 };
 
-var onDropFile = function(e) {
+function onDropFile (e) {
     e.preventDefault();
     var file = e.dataTransfer.files[0];
     readFile(file);
 };
 
-var onCancel = function(e) {
+function onCancel (e) {
     if(e.preventDefault) { e.preventDefault(); }
     return false;
 };
 
-var readFile = function(file) {
+function readFile (file) {
     document.title = file.name;
     var reader = new FileReader();
     reader.onload = function(e) {
@@ -77,7 +77,7 @@ var readFile = function(file) {
     reader.readAsText(file);
 };
 
-var downloadContent = function() {
+function downloadContent () {
     var filename = document.title;
     var text = document.getElementById("textarea").innerText;
     var blob = new Blob([text], {type: "text/plain"});
