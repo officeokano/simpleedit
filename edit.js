@@ -6,6 +6,10 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 
 var storage = localStorage;
 
+function focusit() {
+    document.getElementById("textarea").focus();
+};
+
 function saveContent() {
     var key = "saveeditor";
     var value = document.getElementById("textarea").innerText;
@@ -13,14 +17,14 @@ function saveContent() {
     key = "savetitle";
     value = document.title;
     storage.setItem(key, value);
-    document.getElementById('textarea').focus();
+    focusit();
 };
 
 function loadContent() {
     var loaded = storage.getItem("saveeditor");
     var loadtitle = storage.getItem("savetitle");
     document.getElementById("textarea").innerText = loaded;
-    document.getElementById('textarea').focus();
+    focusit();
     if (loadtitle == null) {
         document.title = "untilted";
         } else {
@@ -47,11 +51,13 @@ function cleartextarea () {
         var conf = window.confirm('clear text?');
         if (conf == true) {
             document.getElementById("textarea").innerText = null;
-            document.getElementById('textarea').focus();
+            focusit();
             document.title = "untitled";
         } else {
-            document.getElementById("textarea").focus();
+            focusit();
         }
+    } else {
+        focusit();
     }
 };
 
@@ -76,7 +82,7 @@ function readFile (file) {
     var reader = new FileReader();
     reader.onload = function(e) {
         document.getElementById("textarea").innerText = e.target.result;
-        document.getElementById('textarea').focus();
+        focusit();
     };
     reader.readAsText(file);
 };
@@ -91,5 +97,5 @@ function downloadContent () {
     a.target = '_blank';
     a.download = filename;
     a.click();
-    document.getElementById("textarea").focus();
+    focusit();
 };
