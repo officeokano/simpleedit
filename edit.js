@@ -43,11 +43,15 @@ window.onbeforeunload = function() {
 };
 
 function cleartextarea () {
-    var conf = window.confirm('clear text?');
-    if (conf == true) {
-        document.getElementById("textarea").innerText = null;
-        document.getElementById('textarea').focus();
-        document.title = "untitled";
+    if (document.getElementById("textarea").innerText != "" ) {
+        var conf = window.confirm('clear text?');
+        if (conf == true) {
+            document.getElementById("textarea").innerText = null;
+            document.getElementById('textarea').focus();
+            document.title = "untitled";
+        } else {
+            document.getElementById("textarea").focus();
+        }
     }
 };
 
@@ -87,4 +91,5 @@ function downloadContent () {
     a.target = '_blank';
     a.download = filename;
     a.click();
+    document.getElementById("textarea").focus();
 };
